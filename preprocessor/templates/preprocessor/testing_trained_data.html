@@ -20,7 +20,7 @@
         {% if folder_list %}
         {% for folder in folder_list %}
         <div class="radiobtn">
-          <input type="radio" name="drone" value="{{folder.name}}"/>
+          <input type="radio" name="trained_pkl" value="{{folder.name}}"/>
           <label for="{{folder.name}}">{{folder.name}}</label>
         </div>
         {% endfor %}
