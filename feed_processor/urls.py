@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-	path('processor/', include('preprocessor.urls')),
+	path('sentiment/models/', include('preprocessor.urls')),
 	path('admin/', admin.site.urls),
 ]

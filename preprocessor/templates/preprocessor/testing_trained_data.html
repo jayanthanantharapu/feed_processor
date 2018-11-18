@@ -1,3 +1,5 @@
+{% load static from staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +11,18 @@
 <div class="file-upload">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {% if folder_list %}
+        {% for folder in folder_list %}
+        <div class="radio">
+            <input id="{{folder.name}}" name="trained_pkl" type="radio" value="{{folder.name}}">
+            <label for="{{folder.name}}" class="radio-label">{{folder.name}}</label>
+        </div>
+        {% endfor %}
+        {% endif %}
         <div class="image-upload-wrap">
             <input class="file-upload-input" type='file' name="unlabelled_set" onchange="readURL(this);" accept=".csv" required />
             <div class="drag-text">
-              <h3>Drag and drop a file or select add Image</h3>
+              <h3>Drag and drop a file to test</h3>
             </div>
         </div>
         <div class="file-upload-content">
@@ -21,21 +31,6 @@
               <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
               <button type="submit" class="remove-image">Submit <span class="image-title">Uploaded Image</span></button>
             </div>
-        </div>
-        <div class="radiobtn">
-          <input type="radio" id="huey"
-                 name="drone" value="huey" checked />
-          <label for="huey">Huey</label>
-        </div>
-        <div class="radiobtn">
-          <input type="radio" id="dewey"
-                 name="drone" value="dewey" />
-          <label for="dewey">Dewey</label>
-        </div>
-        <div class="radiobtn">
-          <input type="radio" id="louie"
-                 name="drone" value="louie" />
-          <label for="louie">Louie</label>
         </div>
     </form>
 </div>
