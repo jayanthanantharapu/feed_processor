@@ -11,3 +11,4 @@ lib64
 media/
 training_sets/
 *.pyc
+venv3
